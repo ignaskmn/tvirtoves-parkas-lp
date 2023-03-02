@@ -1,0 +1,44 @@
+{
+  "name": "tvirtoves-parkas",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@fontsource/fira-mono": "^4.5.10",
+    "@neoconfetti/svelte": "^1.0.0",
+    "@storybook/addon-actions": "^7.0.0-beta.58",
+    "@storybook/addon-essentials": "^7.0.0-beta.58",
+    "@storybook/addon-interactions": "^7.0.0-beta.58",
+    "@storybook/addon-links": "^7.0.0-beta.58",
+    "@storybook/addon-mdx-gfm": "^7.0.0-beta.58",
+    "@storybook/svelte": "^7.0.0-beta.58",
+    "@storybook/sveltekit": "^7.0.0-beta.58",
+    "@storybook/testing-library": "^0.0.14-next.1",
+    "@sveltejs/adapter-auto": "^2.0.0",
+    "@sveltejs/kit": "^1.5.0",
+    "@types/cookie": "^0.5.1",
+    "babel-loader": "^8.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.0.0-beta.58",
+    "svelte": "^3.55.1",
+    "svelte-check": "^3.0.1",
+    "svelte-loader": "^3.1.7",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "@fontsource/rajdhani": "^4.5.10",
+    "@supabase/supabase-js": "^2.10.0"
+  }
+}

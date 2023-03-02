@@ -1,0 +1,40 @@
+@import '@fontsource/rajdhani/500';
+
+:root {
+	--font-body: "Rajdhani", sans-serif;
+	--color-bg-0: rgb(202, 216, 228);
+	--color-theme-1: #CB4110;
+	--color-theme-2: #1F4E00;
+	--color-text: #000;
+	--column-width: 42rem;
+	--column-margin-top: 4rem;
+	font-family: var(--font-body);
+	color: var(--color-text);
+}
+
+body {
+	margin: 0;
+}
+
+h1,
+h2,
+p {
+	font-weight: 500;
+}
+
+p {
+	line-height: 1.5;
+}
+
+a {
+	color: var(--color-text);
+	text-decoration: none;
+}
+
+h1 {
+	font-size: 2rem;
+}
+
+h2 {
+	font-size: 1rem;
+}
