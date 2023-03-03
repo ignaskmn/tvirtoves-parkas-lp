@@ -8,10 +8,6 @@
 	--color-text: #000;
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
-	--item-hover-bg: #cb421036;
-	--border-hover: 1px solid var(--color-theme-1);
-	--border-focused: 1px solid var(--color-theme-1);
-	--font-size: 1.2rem;
 	font-family: var(--font-body);
 	color: var(--color-text);
 }

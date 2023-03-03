@@ -4,13 +4,18 @@
   export let name: string;
 </script>
 
-<label>
-  <span class="label">{label}</span>
-  <input type="text" {name} {placeholder} />
-</label>
+<div class="input-container">
+  <label for="input">{label}</label>
+  <input id="input" type="text" {name} {placeholder} />
+</div>
 
 <style>
-  .label {
+  .input-container {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  label {
     display: block;
     margin-bottom: 0.5rem;
     font-size: 1.5rem;
@@ -18,9 +23,16 @@
 
   input {
     width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 0.5rem 1rem;
+    border: 1px solid #d8d8d8;
     border-radius: 0.25rem;
     font-size: 1.2rem;
+    font-family: var(--font-body);
+  }
+
+  input:focus {
+    outline: none;
+    border: 1px solid var(--color-theme-1);
   }
 </style>

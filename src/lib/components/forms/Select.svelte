@@ -10,10 +10,21 @@
   ];
 </script>
 
-<label for="select">{label}</label>
-<Select {items} id="select" {placeholder} bind:value />
+<div class="select-container">
+  <label for="select">{label}</label>
+  <Select {items} id="select" {placeholder} bind:value />
+</div>
 
 <style>
+  .select-container {
+    margin-bottom: 0.5rem;
+    --list-max-height: 10rem;
+    --item-hover-bg: #cb421036;
+    --item-is-active-bg: #cb421077;
+    --border-hover: 1px solid var(--color-theme-1);
+    --border-focused: 1px solid var(--color-theme-1);
+    --font-size: 1.2rem;
+  }
   label {
     display: block;
     margin-bottom: 0.5rem;
