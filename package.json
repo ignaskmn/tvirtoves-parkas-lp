@@ -39,6 +39,7 @@
   "type": "module",
   "dependencies": {
     "@fontsource/rajdhani": "^4.5.10",
-    "@supabase/supabase-js": "^2.10.0"
+    "@supabase/supabase-js": "^2.10.0",
+    "svelte-select": "^5.3.1"
   }
 }

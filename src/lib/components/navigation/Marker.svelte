@@ -3,17 +3,18 @@
   export let index: number = 1;
   export let isActive: boolean = false;
   export let state: State = "unfilled";
+  export let onClick: () => void = () => {};
 
   type State = "unfilled" | "filling" | "filled";
 
   let colors = {
     unfilled: "#000000",
     filling: "#F2B705",
-    filled: "#1F4E00",
+    filled: "#2c6e00",
   };
 </script>
 
-<button style={`opacity: ${isActive ? "100%" : "70%"};`}>
+<button style={`opacity: ${isActive ? "100%" : "70%"};`} on:click={onClick}>
   <svg
     width={`${height}rem`}
     height={`${height}rem`}
@@ -80,9 +81,17 @@
     padding: 0;
     margin: 0;
     line-height: 0.5rem;
+    cursor: pointer;
+    position: relative;
   }
 
-  .border {
-    cursor: pointer;
+  button:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: var(--gap);
+    border: solid 0.1rem var(--color-text);
+    pointer-events: none;
   }
 </style>

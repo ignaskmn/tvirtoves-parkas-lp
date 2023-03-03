@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/svelte";
 import Marker from "./Marker.svelte";
 
 const meta = {
-  title: "Components/Marker",
+  title: "Navigation/Marker",
   component: Marker,
   args: {
     index: 1,
