@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/svelte";
-import Example from "./Example.svelte";
+import Third from "./Third.svelte";
 
 const meta = {
-  title: "Examples/Example",
-  component: Example,
+  title: "Pages/Third",
+  component: Third,
   args: {},
-} satisfies Meta<Example>;
+} satisfies Meta<Third>;
 
 export default meta;
 

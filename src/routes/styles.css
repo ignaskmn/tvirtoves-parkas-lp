@@ -1,10 +1,14 @@
 @import '@fontsource/rajdhani/500';
+@import '@fontsource/rajdhani/600';
 
 :root {
 	--font-body: "Rajdhani", sans-serif;
-	--color-bg-0: rgb(202, 216, 228);
+	--color-bg-0: #fff;
 	--color-theme-1: #CB4110;
 	--color-theme-2: #255c00;
+	--color-unfilled: #000000;
+	--color-filling: #F2B705;
+	--color-filled: #2c6e00;
 	--color-text: #000;
 	--column-width: 42rem;
 	--column-margin-top: 4rem;

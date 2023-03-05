@@ -2,7 +2,6 @@
   import Marker from "./Marker.svelte";
   import type { Page } from "$lib/types";
 
-  //   export let pages: number[] = [1, 2, 3];
   export let pages: Page[] = [
     { index: 1, state: "unfilled" },
     { index: 2, state: "filling" },

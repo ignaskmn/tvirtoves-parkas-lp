@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let height: number = 5;
+  export let height: number = 4;
   export let index: number = 1;
   export let isActive: boolean = false;
   export let state: State = "unfilled";
@@ -93,5 +93,6 @@
     width: var(--gap);
     border: solid 0.1rem var(--color-text);
     pointer-events: none;
+    z-index: -1;
   }
 </style>
