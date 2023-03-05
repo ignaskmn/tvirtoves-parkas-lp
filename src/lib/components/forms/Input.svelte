@@ -2,15 +2,16 @@
   export let label: string = "";
   export let placeholder: string = "";
   export let name: string;
+  export let value: string = "";
 </script>
 
-<div class="input-container">
+<div class="container">
   <label for="input">{label}</label>
-  <input id="input" type="text" {name} {placeholder} />
+  <input id="input" type="text" {name} {placeholder} bind:value />
 </div>
 
 <style>
-  .input-container {
+  .container {
     width: 100%;
     margin-bottom: 0.5rem;
   }

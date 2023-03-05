@@ -1,24 +1,21 @@
 import type { Meta, StoryObj } from "@storybook/svelte";
 import ContainerDecorator from "./ContainerDecorator.svelte";
-import Select from "./Select.svelte";
+import MultiSelect from "./MultiSelect.svelte";
 
 const meta = {
-  title: "Forms/Select",
-  component: Select,
+  title: "Forms/MultiSelect",
+  component: MultiSelect,
   decorators: [() => ({ Component: ContainerDecorator })],
   args: {
     label: "Label",
-    placeholder: "Pasirinkite",
+    placeholder: "Pasirinkite reikiamas",
   },
-} satisfies Meta<Select>;
+} satisfies Meta<MultiSelect>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    name: "",
-    value: "",
-  },
+  args: {},
 };

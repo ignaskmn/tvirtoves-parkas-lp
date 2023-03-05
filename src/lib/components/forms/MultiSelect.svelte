@@ -6,15 +6,15 @@
   export let name: string = "";
   export let value: string = "";
   export let items: { value: string; label: string }[] = [
-    { value: "1", label: "One" },
-    { value: "2", label: "Two" },
+    { value: "1", label: "Garso aparatūra" },
+    { value: "2", label: "Dviejų eilučių o gal net daugiau" },
     { value: "3", label: "Three" },
   ];
 </script>
 
 <div class="select-container">
   <label for="select">{label}</label>
-  <Select {items} id="select" {placeholder} {name} bind:value />
+  <Select multiple {items} id="select" {placeholder} {name} bind:value />
 </div>
 
 <style>
@@ -25,7 +25,7 @@
     --item-is-active-bg: #cb421077;
     --border-hover: 1px solid var(--color-theme-1);
     --border-focused: 1px solid var(--color-theme-1);
-    --font-size: 1.2rem;
+    --font-size: 1rem;
   }
   label {
     display: block;
