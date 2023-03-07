@@ -13,7 +13,7 @@
   <div class="input-container grow1">
     <Input name="organization" label="Organizacija" />
   </div>
-  <Button label="Siųsti užklausą" isActive={false} />
+  <Button label="Siųsti užklausą" isActive={false} type="submit" />
 </section>
 
 <style>

@@ -1,20 +1,29 @@
 <script lang="ts">
+  import type { State, Colors } from "$lib/types";
+
   export let height: number = 4;
   export let index: number = 1;
   export let isActive: boolean = false;
   export let state: State = "unfilled";
   export let onClick: () => void = () => {};
 
-  type State = "unfilled" | "filling" | "filled";
-
-  let colors = {
-    unfilled: "#000000",
-    filling: "#F2B705",
-    filled: "#2c6e00",
+  let colors: Colors = {
+    unfilled: {
+      true: "#000000",
+      false: "#999999",
+    },
+    filling: {
+      true: "#F2B705",
+      false: "#fae29b",
+    },
+    filled: {
+      true: "#2c6e00",
+      false: "#abc599",
+    },
   };
 </script>
 
-<button style={`opacity: ${isActive ? "100%" : "70%"};`} on:click={onClick}>
+<button on:click={onClick}>
   <svg
     width={`${height}rem`}
     height={`${height}rem`}
@@ -40,7 +49,7 @@
       height="39"
       rx="19.5"
       fill="white"
-      stroke={colors[state]}
+      stroke={colors[state][isActive ? "true" : "false"]}
       stroke-width="2"
     />
     {#if state === "filled"}
@@ -55,7 +64,7 @@
       >
         <path
           d="M13.9918 20.2628L33.5248 0.727692L36.5317 3.73244L13.9918 26.2723L0.468323 12.7488L3.47307 9.74407L13.9918 20.2628Z"
-          fill={colors[state]}
+          fill={colors[state][isActive ? "true" : "false"]}
         />
       </svg>
     {:else}
@@ -65,7 +74,7 @@
         text-anchor="middle"
         alignment-baseline="middle"
         class="marker-text"
-        style={`fill: ${colors[state]};`}
+        style={`fill: ${colors[state][isActive ? "true" : "false"]};`}
       >
         {index}
       </text>

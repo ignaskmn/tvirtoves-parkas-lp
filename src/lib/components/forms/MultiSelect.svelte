@@ -18,9 +18,6 @@
     { value: "10", label: "Ten" },
     { value: "11", label: "Eleven" },
     { value: "12", label: "Twelve" },
-    { value: "13", label: "Thirteen" },
-    { value: "14", label: "Fourteen" },
-    { value: "15", label: "Fifteen" },
   ];
 </script>
 

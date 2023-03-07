@@ -10,7 +10,11 @@
 <section class="layout">
   <div class="grow1">Map</div>
   <div class="input-container">
-    <Select placeholder={"Pasirinkite objektą"} bind:value={object} />
+    <Select
+      placeholder={"Pasirinkite objektą"}
+      bind:value={object}
+      name="object"
+    />
   </div>
   <div class="grow1">Gallery</div>
   <Button label="Rezervuoti" isActive={objectSelected} />

@@ -2,9 +2,11 @@
   export let label: string = "";
   export let isActive: boolean = false;
   export let onClick: () => void = () => {};
+  export let type: "button" | "button" | "submit" | "reset" | null | undefined =
+    "button";
 </script>
 
-<button class={isActive ? "active" : "inactive"} on:click={onClick}
+<button class={isActive ? "active" : "inactive"} on:click={onClick} {type}
   >{label}</button
 >
 
