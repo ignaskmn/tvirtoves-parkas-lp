@@ -1,13 +1,13 @@
-<script>
+<script lang="ts">
+  import Switcher from "$lib/components/navigation/Switcher.svelte";
 </script>
 
 <header>
-  <nav />
+  <Switcher />
 </header>
 
 <style>
   header {
     display: flex;
-    justify-content: space-between;
   }
 </style>

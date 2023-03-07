@@ -1,4 +1,5 @@
 import { supabase } from "$lib/supabaseClient";
+import type { RequestEvent } from "@sveltejs/kit";
 
 export async function load() {
   try {
@@ -13,7 +14,12 @@ export async function load() {
 
 /** @type {import('./$types').Actions} */
 export const actions = {
-  default: async (event: Event) => {
-    console.log("event", event);
+  default: async ({ request }: RequestEvent) => {
+    const data = await request.formData();
+    const object = data.get("object");
+
+    console.log("object", object);
+
+    return { success: true };
   },
 };

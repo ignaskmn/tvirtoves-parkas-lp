@@ -1,6 +1,8 @@
 <script lang="ts">
   import Button from "../Button.svelte";
   import Input from "../forms/Input.svelte";
+
+  export let isActive: boolean;
 </script>
 
 <section class="layout">
@@ -13,7 +15,7 @@
   <div class="input-container grow1">
     <Input name="organization" label="Organizacija" />
   </div>
-  <Button label="Siųsti užklausą" isActive={false} type="submit" />
+  <Button label="Siųsti užklausą" {isActive} type="submit" />
 </section>
 
 <style>
