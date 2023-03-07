@@ -8,11 +8,11 @@
 </script>
 
 <section class="layout">
-  <div class="grow1">1</div>
-  <div class="select-container">
+  <div class="grow1">Map</div>
+  <div class="input-container">
     <Select placeholder={"Pasirinkite objektą"} bind:value={object} />
   </div>
-  <div class="grow1">3</div>
+  <div class="grow1">Gallery</div>
   <Button label="Rezervuoti" isActive={objectSelected} />
 </section>
 
@@ -24,7 +24,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 1rem;
 
     justify-content: space-between;
   }
@@ -33,7 +33,7 @@
     flex-grow: 1;
   }
 
-  .select-container {
+  .input-container {
     width: 90%;
   }
 </style>

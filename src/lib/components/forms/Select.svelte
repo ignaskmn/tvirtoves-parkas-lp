@@ -19,7 +19,6 @@
 
 <style>
   .select-container {
-    margin-bottom: 0.5rem;
     --list-max-height: 10rem;
     --item-hover-bg: #cb421036;
     --item-is-active-bg: #cb421077;

@@ -12,7 +12,6 @@
 <style>
   .container {
     width: 100%;
-    margin-bottom: 0.5rem;
   }
 
   label {

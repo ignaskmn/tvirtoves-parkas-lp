@@ -9,6 +9,18 @@
     { value: "1", label: "Garso aparatūra" },
     { value: "2", label: "Dviejų eilučių o gal net daugiau" },
     { value: "3", label: "Three" },
+    { value: "4", label: "Four" },
+    { value: "5", label: "Five" },
+    { value: "6", label: "Six" },
+    { value: "7", label: "Seven" },
+    { value: "8", label: "Eight" },
+    { value: "9", label: "Nine" },
+    { value: "10", label: "Ten" },
+    { value: "11", label: "Eleven" },
+    { value: "12", label: "Twelve" },
+    { value: "13", label: "Thirteen" },
+    { value: "14", label: "Fourteen" },
+    { value: "15", label: "Fifteen" },
   ];
 </script>
 
@@ -19,7 +31,6 @@
 
 <style>
   .select-container {
-    margin-bottom: 0.5rem;
     --list-max-height: 10rem;
     --item-hover-bg: #cb421036;
     --item-is-active-bg: #cb421077;
@@ -36,6 +47,5 @@
   :global(#select) {
     font-family: var(--font-body);
     font-size: 1.2rem;
-    --background: red;
   }
 </style>
