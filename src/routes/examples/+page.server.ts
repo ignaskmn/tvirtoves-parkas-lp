@@ -3,7 +3,7 @@ import type { RequestEvent } from "@sveltejs/kit";
 
 export async function load() {
   try {
-    const { data } = await supabase.from("examples").select();
+    const { data } = await supabase.from("objects").select();
     return {
       examples: data ?? [],
     };

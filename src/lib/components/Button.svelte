@@ -1,7 +1,7 @@
 <script lang="ts">
   export let label: string = "";
   export let isActive: boolean = false;
-  export let onClick: () => void = () => {};
+  export let onClick: (e: MouseEvent) => void = () => {};
   export let type: "button" | "button" | "submit" | "reset" | null | undefined =
     "button";
 </script>
@@ -12,6 +12,7 @@
 
 <style>
   button {
+    font-family: var(--font-body);
     width: fit-content;
     font-weight: 500;
     border-radius: 0.3rem;

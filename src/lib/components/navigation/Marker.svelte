@@ -23,7 +23,7 @@
   };
 </script>
 
-<button on:click={onClick}>
+<a href={`${index}`} on:click={onClick}>
   <svg
     width={`${height}rem`}
     height={`${height}rem`}
@@ -80,11 +80,11 @@
       </text>
     {/if}
   </svg>
-</button>
+</a>
 
 <!-- </div> -->
 <style>
-  button {
+  a {
     background: none;
     border: none;
     padding: 0;
@@ -94,7 +94,7 @@
     position: relative;
   }
 
-  button:not(:last-child)::after {
+  a:not(:last-child)::after {
     content: "";
     position: absolute;
     top: 50%;

@@ -3,7 +3,7 @@ export const objects = [
     id: 1,
     name: "Parakas",
     description: "Lorem ipsum",
-    images: [],
+    images: "$lib/images/parakas",
     services: [
       {
         value: "wc",

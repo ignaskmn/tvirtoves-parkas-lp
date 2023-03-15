@@ -1,5 +1,11 @@
 export type State = "unfilled" | "filling" | "filled";
 
+// export enum State {
+//   Unfilled = 0,
+//   Filling = 1,
+//   Filled = 2,
+// }
+
 export type Page = {
   index: number;
   state: State;

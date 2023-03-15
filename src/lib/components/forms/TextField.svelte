@@ -6,7 +6,7 @@
 
 <div class="container">
   <label for="textarea">{label}</label>
-  <textarea id="textarea" {name} {value} />
+  <textarea id="textarea" {name} bind:value />
 </div>
 
 <style>

@@ -4,11 +4,9 @@
   export let label: string = "";
   export let placeholder: string = "";
   export let name: string = "";
-  export let value: string = "";
+  export let value: string[] = [];
+  export let listEmpty: boolean = false;
   export let items: { value: string; label: string }[] = [
-    { value: "1", label: "Garso aparatūra" },
-    { value: "2", label: "Dviejų eilučių o gal net daugiau" },
-    { value: "3", label: "Three" },
     { value: "4", label: "Four" },
     { value: "5", label: "Five" },
     { value: "6", label: "Six" },
@@ -23,7 +21,16 @@
 
 <div class="select-container">
   <label for="select">{label}</label>
-  <Select multiple {items} id="select" {placeholder} {name} bind:value />
+  <Select
+    multiple
+    {items}
+    id="select"
+    {placeholder}
+    {name}
+    closeListOnChange={listEmpty}
+    clearable={false}
+    bind:value
+  />
 </div>
 
 <style>

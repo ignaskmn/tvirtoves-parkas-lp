@@ -2,6 +2,13 @@
   import Button from "../Button.svelte";
   import Select from "../forms/Select.svelte";
 
+  export let items: { value: string; label: string }[];
+  // export let items: { value: string; label: string }[] = [
+  //   { value: "1", label: "One" },
+  //   { value: "2", label: "Two" },
+  //   { value: "3", label: "Three" },
+  // ];
+
   let object: string = "";
 
   $: objectSelected = object !== "" && object !== undefined;
@@ -12,6 +19,7 @@
   <div class="input-container">
     <Select
       placeholder={"Pasirinkite objektą"}
+      {items}
       bind:value={object}
       name="object"
     />
