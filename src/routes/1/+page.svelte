@@ -2,9 +2,8 @@
   import Button from "$lib/components/Button.svelte";
   import Select from "$lib/components/forms/Select.svelte";
   import { supabase } from "$lib/supabaseClient";
-  import { fly } from "svelte/transition";
   import { goto } from "$app/navigation";
-  import { form, services } from "$lib/stores";
+  import { form, services, pageStates } from "$lib/stores";
 
   export let items: { value: string; label: string }[];
   export let data;
@@ -25,8 +24,20 @@
     console.log("No objects found");
   }
 
+  function handleChange() {
+    if ($form.object) {
+      handleSelection();
+    } else {
+      clearSelection();
+    }
+  }
+
   async function handleSelection() {
-    object = Object.values($form.object)[0];
+    if (object != Object.values($form.object)[0]) {
+      object = Object.values($form.object)[0];
+    } else {
+      return;
+    }
 
     objects?.map((o) => {
       if (o.object_id === object) {
@@ -34,6 +45,8 @@
         objectImages = o.images;
       }
     });
+
+    $pageStates[0] = 2;
 
     let { data, error } = await supabase
       .from("service_labels")
@@ -44,14 +57,17 @@
       // handle error
       console.log(error);
     } else {
-      // set services to services store
+      // clear services store, populate with data fethced from db
       $services = [];
-      data.forEach((service) => {
-        $services.push({
-          value: String(service.service_id),
-          label: service.label,
-        });
-      });
+      $services = data.map((service) => ({
+        value: String(service.service_id),
+        label: service.label,
+      }));
+      // check if user has selected any services that don't exist in the new $services store and remove them
+      $form.services = $form.services.filter(
+        (storedService: { value: string }) =>
+          $services.some((service) => service.value === storedService.value)
+      );
     }
   }
 
@@ -59,19 +75,20 @@
     object = "";
     objectDescription = "";
     objectImages = "";
-    $services = [];
+    $pageStates[0] = 0;
+    $services = [{ value: "", label: "" }];
+    $form.services = [];
   }
 
   async function handleClick() {
     if (!objectSelected) return;
-    // get selected object id
-
-    // set services to form
+    // if object is selected and button pressed, go to page 2
     goto("/2");
   }
 
-  $: objectSelected = $form.object !== "" && $form.object !== undefined;
-  $: $form.object ? handleSelection() : clearSelection();
+  // $: $form.object ? handleSelection() : clearSelection();
+  $: $form.object, handleChange();
+  $: objectSelected = $pageStates[0] === 2 ? true : false;
 </script>
 
 <section class="layout">
@@ -95,6 +112,7 @@
       <p>{objectImages}</p>
     </div>
   </div>
+  <!-- Button becomes active if the state of current page becomes equal to 2, which happens when object is selected  -->
   <Button label="Rezervuoti" isActive={objectSelected} onClick={handleClick} />
 </section>
 

@@ -1,9 +1,28 @@
 <script lang="ts">
   import Button from "$lib/components/Button.svelte";
   import Input from "$lib/components/forms/Input.svelte";
-  import { form } from "$lib/stores";
+  import { form, pageStates } from "$lib/stores";
 
   export let isActive: boolean = true;
+
+  function handleFilled() {
+    if ($form.firstName != "" && $form.phone != "" && $form.email != "") {
+      $pageStates[2] = 2;
+    } else {
+      $pageStates[2] = 1;
+    }
+  }
+
+  function handleEmptied() {
+    $pageStates[2] = 0;
+  }
+
+  $: $form.firstName === "" &&
+  $form.phone === "" &&
+  $form.email === "" &&
+  $form.organization === ""
+    ? handleEmptied()
+    : handleFilled();
 </script>
 
 <section class="layout">

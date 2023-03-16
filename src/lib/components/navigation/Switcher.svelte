@@ -1,29 +1,31 @@
 <script lang="ts">
   import Marker from "./Marker.svelte";
-  import { page, pages } from "$lib/stores";
-  import type { Page } from "$lib/types";
+  import { goto } from "$app/navigation";
+  import { activePage, pageStates } from "$lib/stores";
 
-  export let pagez: Page[] = [
-    { index: 1, state: "unfilled" },
-    { index: 2, state: "filling" },
-    { index: 3, state: "filled" },
-  ];
-
-  export let activePage: number = 1;
+  function getState(state: number) {
+    switch (state) {
+      case 0:
+        return "unfilled";
+      case 1:
+        return "filling";
+      case 2:
+        return "filled";
+    }
+  }
 
   function handleClick(index: number) {
-    activePage = index;
-    page.set(index);
+    goto(`/${index}`);
   }
 </script>
 
 <div class="switcher">
-  {#each $pages as p, i}
+  {#each $pageStates as state, i}
     <Marker
-      index={$pages[i].index}
-      isActive={$pages[i].index === activePage}
-      onClick={() => handleClick($pages[i].index)}
-      state={pagez[i].state}
+      index={i + 1}
+      isActive={$activePage === i + 1}
+      onClick={() => handleClick(i + 1)}
+      state={getState(state)}
     />
   {/each}
 </div>

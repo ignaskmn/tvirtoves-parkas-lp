@@ -7,7 +7,14 @@
 
 <div class="container">
   <label for="input">{label}</label>
-  <input id="input" type="text" {name} {placeholder} bind:value />
+  <input
+    id="input"
+    maxlength="50"
+    type="text"
+    {name}
+    {placeholder}
+    bind:value
+  />
 </div>
 
 <style>

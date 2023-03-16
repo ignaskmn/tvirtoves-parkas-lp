@@ -3,11 +3,39 @@
   import Select from "$lib/components/forms/Select.svelte";
   import MultiSelect from "$lib/components/forms/MultiSelect.svelte";
   import TextField from "$lib/components/forms/TextField.svelte";
-  import { form, services } from "$lib/stores";
+  import { goto } from "$app/navigation";
+  import { form, services, pageStates } from "$lib/stores";
 
   export let data;
-
   let items: { value: string; label: string }[] = [];
+
+  function handleFilled() {
+    if ($form.description != "" && !checkActivities() && !checkServices()) {
+      $pageStates[1] = 2;
+    } else {
+      $pageStates[1] = 1;
+    }
+  }
+
+  function handleEmptied() {
+    $pageStates[1] = 0;
+  }
+
+  function checkActivities() {
+    if ($form.activity && $form.activity != "") {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  function checkServices() {
+    if ($form.services && $form.services.length > 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   const { activities } = data;
   if (activities) {
@@ -19,6 +47,10 @@
     //handle error
     console.log("No objects found");
   }
+
+  $: $form.description === "" && checkActivities() && checkServices()
+    ? handleEmptied()
+    : handleFilled();
 </script>
 
 <section class="layout">
@@ -50,7 +82,7 @@
       bind:value={$form.services}
     />
   </div>
-  <Button label="Toliau" isActive={true} />
+  <Button label="Toliau" isActive={true} onClick={() => goto("/3")} />
 </section>
 
 <style>

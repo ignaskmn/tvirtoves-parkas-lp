@@ -4,13 +4,7 @@ import Switcher from "./Switcher.svelte";
 const meta = {
   title: "Navigation/Switcher",
   component: Switcher,
-  args: {
-    pages: [
-      { index: 1, state: "unfilled" },
-      { index: 2, state: "unfilled" },
-      { index: 3, state: "unfilled" },
-    ],
-  },
+  args: {},
 } satisfies Meta<Switcher>;
 
 export default meta;

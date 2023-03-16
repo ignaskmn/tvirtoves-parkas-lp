@@ -2,11 +2,11 @@
   import Header from "./Header.svelte";
   import "./styles.css";
   import { fly } from "svelte/transition";
+  import { activePage } from "$lib/stores";
 
   export let data;
 
-  $: currentPath = data.currentPath.split("/")[1];
-  console.log(currentPath);
+  $: currentPath = activePage.set(parseInt(data.currentPath.split("/")[1]));
 </script>
 
 <div class="app">
