@@ -82,7 +82,7 @@
       bind:value={$form.services}
     />
   </div>
-  <Button label="Toliau" isActive={true} onClick={() => goto("/3")} />
+  <Button label="Toliau" isActive={true} onClick={() => goto("/form/3")} />
 </section>
 
 <style>

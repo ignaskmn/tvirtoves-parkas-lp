@@ -15,7 +15,7 @@
   }
 
   function handleClick(index: number) {
-    goto(`/${index}`);
+    goto(`/form/${index}`);
   }
 </script>
 

@@ -83,7 +83,7 @@
   async function handleClick() {
     if (!objectSelected) return;
     // if object is selected and button pressed, go to page 2
-    goto("/2");
+    goto("/form/2");
   }
 
   // $: $form.object ? handleSelection() : clearSelection();
