@@ -4,10 +4,11 @@
   import { supabase } from "$lib/supabaseClient";
   import { goto } from "$app/navigation";
   import { form, services, pageStates } from "$lib/stores";
+  import MapWithMarkers from "$lib/components/map/MapWithMarkers.svelte";
 
-  export let items: { value: string; label: string }[];
   export let data;
 
+  let items: { value: number; label: string }[];
   let object: string;
   let objectDescription: string;
   let objectImages: string;
@@ -80,7 +81,7 @@
     $form.services = [];
   }
 
-  async function handleClick() {
+  function handleClick() {
     if (!objectSelected) return;
     // if object is selected and button pressed, go to page 2
     goto("/form/2");
@@ -92,9 +93,7 @@
 </script>
 
 <section class="layout">
-  <div class="map-container" style={`flex-grow: ${objectSelected ? "1" : "1"}`}>
-    Map
-  </div>
+  <div class="map-container"><MapWithMarkers {items} /></div>
   <div class="input-container">
     <Select
       placeholder={"Pasirinkite objektą"}
@@ -103,10 +102,7 @@
       name="object"
     />
   </div>
-  <div
-    class="gallery-container"
-    style={`flex-grow: ${objectSelected ? "1" : "1"}`}
-  >
+  <div class="gallery-container">
     <div class={`gallery ${objectSelected ? "" : "hidden"}`}>
       <p>{objectDescription}</p>
       <p>{objectImages}</p>
@@ -120,40 +116,35 @@
   .layout {
     width: 100%;
     height: 100%;
-    margin-top: 1rem;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-
-    justify-content: space-between;
   }
 
   .map-container {
-    transition: flex-grow 0.3s ease-in-out;
+    flex-grow: 1;
+    transform: translate(12%, -0%);
+    height: 0;
+    transition: all 0.3s ease-in-out;
   }
 
   .gallery-container {
+    flex-grow: 1;
     transition: flex-grow 0.3s ease-in-out;
   }
 
   .input-container {
-    width: 90%;
+    width: 100%;
   }
 
   .gallery {
     opacity: 1;
-    /* visibility: visible; */
     transition: opacity 0.3s ease-in-out;
-  }
-
-  .gallery p {
-    min-height: 1.5rem;
   }
 
   .hidden {
     opacity: 0;
-    /* visibility: hidden; */
   }
 </style>

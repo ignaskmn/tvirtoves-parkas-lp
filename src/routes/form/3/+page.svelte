@@ -28,13 +28,16 @@
     : handleFilled();
 
   async function insertData(formData: any) {
+    if (checkEmail(formData.email) === false) {
+      return;
+    }
     // object is a required field so we can safely parse it
-    console.log(formData.object.value);
     const object = parseInt(formData.object.value);
+    // activity might take on several types of values so we need to check if it's empty
     const activity =
-      formData.activity != "" || formData.activity != undefined
+      formData.activity != ("" || undefined || null)
         ? parseInt(formData.activity.value)
-        : "";
+        : null;
     const services = formData.services;
 
     let servicesArray: string[] = [];
@@ -74,6 +77,16 @@
     return data;
   }
 
+  function checkEmail(email: string) {
+    const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (re.test(email)) {
+      return true;
+    } else {
+      alert("Neteisingas el. pašto adresas");
+      return false;
+    }
+  }
+
   function clearForm() {
     $form.object = "";
     $form.activity = "";
@@ -87,14 +100,14 @@
 </script>
 
 <section class="layout">
-  <h1>Kontaktinis asmuo</h1>
+  <h1 class="grow1">Kontaktinis asmuo</h1>
   <div class="input-container">
     <Input name="firstName" label="Vardas" bind:value={$form.firstName} />
   </div>
   <div class="input-container">
     <Input name="phone" label="Telefono nr." bind:value={$form.phone} />
   </div>
-  <div class="input-container">
+  <div class="input-container" id="email">
     <Input name="email" label="El. pašto adresas" bind:value={$form.email} />
   </div>
   <div class="input-container grow1">
@@ -116,18 +129,14 @@
     width: 100%;
     height: 100%;
 
-    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-
-    justify-content: space-between;
   }
 
   h1 {
-    margin-top: 1rem;
-    margin-bottom: 0;
+    margin: 0;
   }
 
   .grow1 {
@@ -135,6 +144,6 @@
   }
 
   .input-container {
-    width: 90%;
+    width: 100%;
   }
 </style>

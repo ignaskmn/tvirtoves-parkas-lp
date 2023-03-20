@@ -4,8 +4,8 @@
   export let label: string = "";
   export let placeholder: string = "";
   export let name: string = "";
-  export let value: string;
-  export let items: { value: string; label: string }[];
+  export let value: string = "";
+  export let items: { value: number; label: string }[];
 </script>
 
 <div class="select-container">
@@ -22,6 +22,7 @@
     --border-focused: 1px solid var(--color-theme-1);
     --font-size: 1.2rem;
   }
+
   label {
     display: block;
     margin-bottom: 0.5rem;

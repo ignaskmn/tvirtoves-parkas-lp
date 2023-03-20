@@ -9,10 +9,10 @@
   $: currentPath = activePage.set(parseInt(data.currentPath[6]));
 </script>
 
-<div class="form">
+<div class="form-container">
   <Header />
 
-  <main>
+  <div class="form">
     {#key data.currentPath}
       <div
         class="page-container"
@@ -22,30 +22,36 @@
         <slot />
       </div>
     {/key}
-  </main>
+  </div>
 </div>
 
 <style>
-  .form {
-    margin-top: 1rem;
+  .form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh - 1rem;
+    height: 100%;
+    /* background-color: beige; */
+    width: 960px;
   }
 
-  main {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    width: 33vw;
-    overflow: hidden;
+  .form {
+    flex-grow: 1;
   }
 
   .page-container {
-    width: 33vw;
-    height: 92%;
+    height: 100%;
+    width: 90vw;
+  }
+
+  @media (min-width: 768px) {
+    .page-container {
+      width: 480px;
+    }
+
+    /* .page-container {
+      width: 33vw;
+      height: 92%;
+    } */
   }
 </style>

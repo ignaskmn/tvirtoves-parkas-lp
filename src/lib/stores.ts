@@ -7,6 +7,7 @@ export const pageStates = persisted("pageStates", [0, 0, 0], {
 });
 
 export const form = persisted("form", {
+  // object: { value: "", label: "" },
   object: "",
   activity: "",
   description: "",

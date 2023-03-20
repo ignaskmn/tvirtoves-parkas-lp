@@ -1,13 +1,19 @@
 <script lang="ts">
   export let label: string = "";
   export let isActive: boolean = false;
+  export let isLarge: boolean = false;
   export let onClick: (e: MouseEvent) => void = () => {};
   export let type: "button" | "button" | "submit" | "reset" | null | undefined =
     "button";
 </script>
 
-<button class={isActive ? "active" : "inactive"} on:click={onClick} {type}
-  >{label}</button
+<button
+  class={isActive ? "active" : "inactive"}
+  style={`font-size: ${isLarge ? "2.5rem" : "1.5rem"}; padding: ${
+    isLarge ? "0.5rem 4rem" : "0.5rem 3rem"
+  }`}
+  on:click={onClick}
+  {type}>{label}</button
 >
 
 <style>
@@ -20,6 +26,7 @@
     padding: 0.5rem 3rem;
     cursor: pointer;
     transition: all 0.1s ease-in-out;
+    margin: 2rem 0;
   }
 
   .active {

@@ -1,13 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/svelte";
-import Map from "./Map.svelte";
+import MapMarker from "./MapMarker.svelte";
 
 const meta = {
-  title: "Components/Map",
-  component: Map,
+  title: "Map/MapMarker",
+  component: MapMarker,
   args: {
-    width: 500,
+    lat: 0,
+    lng: 0,
+    width: 1.5,
   },
-} satisfies Meta<Map>;
+} satisfies Meta<MapMarker>;
 
 export default meta;
 

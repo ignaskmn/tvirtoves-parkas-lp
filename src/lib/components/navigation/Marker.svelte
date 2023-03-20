@@ -92,6 +92,7 @@
     line-height: 0.5rem;
     cursor: pointer;
     position: relative;
+    z-index: 1;
   }
 
   button:not(:last-child)::after {
@@ -102,6 +103,5 @@
     width: var(--gap);
     border: solid 0.1rem var(--color-text);
     pointer-events: none;
-    z-index: -1;
   }
 </style>

@@ -37,6 +37,10 @@
     }
   }
 
+  function handleClick() {
+    goto("/form/3");
+  }
+
   const { activities } = data;
   if (activities) {
     items = activities.map((activity) => ({
@@ -82,7 +86,7 @@
       bind:value={$form.services}
     />
   </div>
-  <Button label="Toliau" isActive={true} onClick={() => goto("/form/3")} />
+  <Button label="Toliau" isActive={true} onClick={handleClick} />
 </section>
 
 <style>
@@ -90,13 +94,10 @@
     width: 100%;
     height: 100%;
 
-    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-
-    justify-content: space-between;
   }
 
   .grow1 {
@@ -104,6 +105,6 @@
   }
 
   .input-container {
-    width: 90%;
+    width: 100%;
   }
 </style>
