@@ -57,7 +57,7 @@
           activity: activity,
           description: formData.description,
           services: servicesArray,
-          firstName: formData.fistName,
+          firstName: formData.firstName,
           phone: formData.phone,
           email: formData.email,
           organization: formData.organization,

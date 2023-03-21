@@ -4,7 +4,8 @@
   import { form } from "$lib/stores";
 
   export let items: { value: number; label: string }[];
-  export let scale = 1;
+  export let scale: number = 1;
+  let shift: number = 0;
 
   let scaledCoords = [
     {
@@ -46,6 +47,7 @@
   ];
 
   $: object = $form.object ? parseInt(Object.values($form.object)[0]) : null;
+  $: shift = object ? -scaledCoords[object - 1].lng + 120 * scale : 0;
 
   function setActive(current: number) {
     if (current === object) {
@@ -57,14 +59,14 @@
   }
 </script>
 
-<div class="map">
-  <Map width={scale * 30} />
+<div class="map" style={`transform: scale(${scale}) translate(0, ${shift}px)`}>
+  <Map width={30} />
 
   {#each scaledCoords as coord, i}
     <MapMarker
       lat={coord.lat - 15}
       lng={coord.lng - 10}
-      width={scale * 1.5}
+      width={1.5}
       isActive={i + 1 === object}
       onClick={() => {
         setActive(i + 1);
@@ -75,7 +77,9 @@
 
 <style>
   .map {
+    display: flex;
     position: relative;
-    transform: scale(1);
+
+    transition: all 0.3s ease-in-out;
   }
 </style>

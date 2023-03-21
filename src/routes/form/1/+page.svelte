@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import Button from "$lib/components/Button.svelte";
   import Select from "$lib/components/forms/Select.svelte";
   import { supabase } from "$lib/supabaseClient";
@@ -13,6 +14,20 @@
   let objectDescription: string;
   let objectImages: string;
   let objectSelected = false;
+  let innerWidth: number;
+
+  let mapContainerWidth: number;
+
+  // onMount(async () => {
+  //   const container = document.querySelector(".map-container") as HTMLElement;
+  //   if (innerWidth < 480) {
+  //     mapContainerWidth = innerWidth;
+  //   } else {
+  //     if (container) {
+  //       mapContainerWidth = container.clientWidth;
+  //     }
+  //   }
+  // });
 
   const { objects } = data;
   if (objects) {
@@ -90,10 +105,19 @@
   // $: $form.object ? handleSelection() : clearSelection();
   $: $form.object, handleChange();
   $: objectSelected = $pageStates[0] === 2 ? true : false;
+  $: mapContainerWidth = innerWidth < 480 ? innerWidth : 480;
+  $: mapScale = innerWidth < 480 ? innerWidth / 480 : 1;
 </script>
 
+<svelte:window bind:innerWidth />
+
 <section class="layout">
-  <div class="map-container"><MapWithMarkers {items} /></div>
+  <div
+    class="map-container"
+    style={`height: ${objectSelected ? 192 : mapContainerWidth / 1.333333}px`}
+  >
+    <MapWithMarkers {items} scale={mapScale} />
+  </div>
   <div class="input-container">
     <Select
       placeholder={"Pasirinkite objektą"}
@@ -104,8 +128,8 @@
   </div>
   <div class="gallery-container">
     <div class={`gallery ${objectSelected ? "" : "hidden"}`}>
-      <p>{objectDescription}</p>
-      <p>{objectImages}</p>
+      <!-- <p>{objectDescription}</p>
+      <p>{objectImages}</p> -->
     </div>
   </div>
   <!-- Button becomes active if the state of current page becomes equal to 2, which happens when object is selected  -->
@@ -120,13 +144,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* overflow: hidden; */
     gap: 1rem;
   }
 
   .map-container {
-    flex-grow: 1;
-    transform: translate(12%, -0%);
-    height: 0;
+    display: flex;
+
     transition: all 0.3s ease-in-out;
   }
 

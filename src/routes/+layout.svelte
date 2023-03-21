@@ -21,7 +21,8 @@
     display: flex;
     justify-content: center;
     height: 100vh;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 
     -ms-overflow-style: none;
     scrollbar-width: none;
