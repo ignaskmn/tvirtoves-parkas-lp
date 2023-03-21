@@ -1,15 +1,13 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import Button from "$lib/components/Button.svelte";
-  import logo from "$lib/images/logo.png";
+  import logo from "$lib/images/logo.svg";
 </script>
 
 <div class="hero-container">
-  <div class="logo-container flex1">
-    <div class="logo">
-      <img src={logo} alt="Tvirtovės Parkas" />
-    </div>
-    <h2>Kauno <br /> tvirtovės <br /> parkas</h2>
+  <div class="introduction flex1">
+    <h1 class="hash-tag">#</h1>
+    <h1>laisvas <br /> plotas</h1>
   </div>
   <div class="button">
     <Button
@@ -19,9 +17,11 @@
       onClick={() => goto("/form/1")}
     />
   </div>
-  <div class="introduction flex1">
-    <h1 class="hash-tag">#</h1>
-    <h1>laisvas <br /> plotas</h1>
+  <div class="logo-container flex1">
+    <div class="logo">
+      <img src={logo} alt="Tvirtovės Parkas" />
+    </div>
+    <h2>Kauno <br /> tvirtovės <br /> parkas</h2>
   </div>
 </div>
 
@@ -47,7 +47,7 @@
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 1.3rem;
   }
 
   .introduction {
@@ -72,7 +72,7 @@
     display: flex;
     align-items: center;
     /* height: 10rem; */
-    width: 10rem;
+    width: 5rem;
   }
 
   .logo img {
