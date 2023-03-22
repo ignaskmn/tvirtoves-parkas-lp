@@ -45,3 +45,13 @@ export type Form = {
   email: string;
   organization: string;
 };
+
+export type Request = {
+  request_id: number;
+  created_at: string;
+  email: string;
+  objects: {
+    name: string;
+  };
+  read: boolean;
+};

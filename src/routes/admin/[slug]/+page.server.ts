@@ -10,7 +10,7 @@ export async function load({ params }) {
       )
       .eq("request_id", params.slug);
     return {
-      objects: data ?? [],
+      requests: data ?? [],
     };
   } catch (error) {
     console.log("error", error);
