@@ -47,11 +47,19 @@ export type Form = {
 };
 
 export type Request = {
-  request_id: number;
+  request_id?: number;
+  activities?: {
+    label: string;
+  };
   created_at: string;
+  description?: string;
   email: string;
+  firstName?: string;
   objects: {
     name: string;
   };
+  organization?: string;
+  phone?: string;
   read: boolean;
+  services?: number[];
 };

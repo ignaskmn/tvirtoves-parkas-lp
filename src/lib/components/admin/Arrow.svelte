@@ -1,0 +1,42 @@
+<script lang="ts">
+  export let width: number = 2;
+  export let left: boolean = false;
+  export let isActive = true;
+</script>
+
+<div class={`arrow ${isActive ? "active" : ""}`}>
+  <svg
+    version="1.1"
+    id="Capa_1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    width="{width}rem"
+    height="{width}rem"
+    viewBox="0 0 123.959 123.959"
+    xml:space="preserve"
+    class={left ? "" : "rotate"}
+  >
+    <g>
+      <path
+        d="M85.742,1.779l-56,56c-2.3,2.3-2.3,6.1,0,8.401l56,56c3.801,3.8,10.2,1.1,10.2-4.2v-112
+            C95.942,0.679,89.543-2.021,85.742,1.779z"
+      />
+    </g>
+  </svg>
+</div>
+
+<style>
+  .arrow {
+    display: flex;
+    align-items: center;
+    fill: #ccc;
+  }
+
+  .active {
+    fill: var(--color-theme-1);
+  }
+
+  .rotate {
+    transform: rotate(180deg);
+  }
+</style>

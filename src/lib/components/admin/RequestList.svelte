@@ -4,14 +4,14 @@
   export let requests: Request[];
 </script>
 
-<div class="request__container">
+<div class="requests">
   {#each requests as request}
     <RequestListItem {request} />
   {/each}
 </div>
 
 <style>
-  .request__container {
+  .requests {
     display: flex;
     flex-direction: column;
     width: 100%;

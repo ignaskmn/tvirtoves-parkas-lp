@@ -32,7 +32,7 @@
   }
 
   svg {
-    left: -0.5rem;
+    left: -0.4rem;
     top: -0.75rem;
     position: absolute;
   }

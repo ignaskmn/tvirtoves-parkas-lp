@@ -7,22 +7,25 @@
 
   const { request_id, created_at, email, objects, read } = request;
 
-  function onClick() {
+  async function onClick() {
     if (!read) {
-      supabase
+      await supabase
         .from("requests")
         .update({ read: true })
         .eq("request_id", request_id);
     }
+    console.log(request_id);
   }
 
   const date = new Date(created_at);
 </script>
 
-<a href={`/admin/${request_id}`} class="request" on:click={onClick}>
-  <div class="item">{objects.name}</div>
-  <div class="item">{email}</div>
-  <div class="item date">{date.toLocaleDateString()}</div>
+<a href={`/admin/req/${request_id}`} class="request" on:click={onClick}>
+  <div class="items">
+    <div class="item name">{objects.name}</div>
+    <div class="item email">{email}</div>
+    <div class="item date">{date.toLocaleDateString()}</div>
+  </div>
   <div class="read">
     <Read {read} />
   </div>
@@ -35,6 +38,7 @@
     align-items: center;
     padding: 0.5rem;
     font-size: 1.25rem;
+    gap: 1rem;
     border: 1px solid black;
     border-radius: 0.25rem;
     cursor: pointer;
@@ -42,6 +46,12 @@
 
   .request:hover {
     background-color: #f0f0f0;
+  }
+
+  .items {
+    display: flex;
+    flex-direction: row;
+    flex: 3;
   }
 
   .item {
@@ -62,6 +72,19 @@
 
     .item {
       flex: 1;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .items {
+      flex-direction: column;
+    }
+
+    .item:not(:first-child) {
+      border-top: 1px solid black;
+      padding-top: 0.5rem;
+      border-left: none;
+      padding-left: 0;
     }
   }
 </style>
