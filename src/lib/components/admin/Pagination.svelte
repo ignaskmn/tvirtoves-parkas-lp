@@ -21,7 +21,7 @@
 </script>
 
 <div class="pagination">
-  {#if prevPage < 1}
+  {#if prevPage === -1}
     <Arrow isActive={false} left={true} />
   {:else}
     <a href="/admin/req?page={prevPage}">
@@ -35,7 +35,7 @@
       </a>
     {/each}
   </div>
-  {#if nextPage > pages}
+  {#if nextPage >= pages}
     <Arrow isActive={false} left={false} />
   {:else}
     <a href="/admin/req?page={nextPage}">

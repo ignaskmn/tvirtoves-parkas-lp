@@ -2,7 +2,7 @@ import { supabase } from "$lib/supabaseClient";
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url }) {
-  const query = url.pathname.split("/").at(-1);
+  const query = url.searchParams.get("page");
   let page: number;
   if (query) {
     page = parseInt(query) ? parseInt(query) : 0;
@@ -21,7 +21,7 @@ export async function load({ url }) {
     return {
       requests: data ?? [],
       count: count ?? 0,
-      page: page ?? 0,
+      currentPage: page ?? 0,
     };
   } catch (error) {
     console.log("error", error);

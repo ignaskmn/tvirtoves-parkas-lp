@@ -35,7 +35,7 @@
 </script>
 
 <div class="requests__container">
-  <a href="/admin">Atgal</a>
+  <a href="/admin/req">Atgal</a>
   <div class="category">
     <div class="label">Objektas</div>
     <div class="value">{name}</div>
