@@ -1,26 +1,22 @@
 <script lang="ts">
+  import { invalidate } from "$app/navigation";
+  import { onMount } from "svelte";
+  import type { LayoutData } from "./$types";
   import "./styles.css";
 
-  // import { createSupabaseLoadClient } from "@supabase/auth-helpers-sveltekit";
-  // import type { LayoutServerLoad } from "./$types";
-  // import type { Database } from "../DatabaseDefinitions";
+  export let data: LayoutData;
 
-  // export const load: LayoutServerLoad = async ({ fetch, data, depends }) => {
-  //   depends("supabase:auth");
+  $: ({ supabase } = data);
 
-  //   const supabase = createSupabaseLoadClient<Database>({
-  //     supabaseUrl: import.meta.env.PUBLIC_SUPABASE_URL,
-  //     supabaseKey: import.meta.env.PUBLIC_SUPABASE_ANON_KEY,
-  //     event: { fetch },
-  //     serverSession: data.session,
-  //   });
+  onMount(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(() => {
+      invalidate("supabase:auth");
+    });
 
-  //   const {
-  //     data: { session },
-  //   } = await supabase.auth.getSession();
-
-  //   return { supabase, session };
-  // };
+    return () => subscription.unsubscribe();
+  });
 </script>
 
 <svelte:head>

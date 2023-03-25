@@ -1,4 +1,4 @@
-import { supabase } from "$lib/supabaseClient";
+// import { supabase } from "$lib/supabaseClient";
 import type { RequestEvent } from "@sveltejs/kit";
 
 export async function load() {

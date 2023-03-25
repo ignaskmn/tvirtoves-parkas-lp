@@ -1,46 +1,36 @@
 <script lang="ts">
-  import { supabase } from "$lib/supabaseClient";
+  import { page } from "$app/stores";
+  export let data: { examples: Example[] };
 
   type Example = {
+    id: number;
+    created_at: string;
     label: string;
   };
 
-  export let data: { examples: Example[] };
+  const { examples } = data;
 
-  let { examples } = data;
+  async function handleClick() {
+    console.log("clicked");
 
-  $: examples;
-
-  const handleClick = async () => {
-    const { data, error } = await supabase
+    const { data: examples } = await $page.data.supabase
       .from("examples")
-      .insert({ label: "Denmark" })
       .select();
 
-    // push the new example to the array
-    if (data) {
-      examples = [...examples, data[0] as Example];
-    }
-
     console.log(examples);
-  };
+  }
 </script>
 
-<ul>
+<div class="container">
   {#each examples as example}
-    <li>{example.label}</li>
+    <div>{example.label}</div>
   {/each}
-  <button on:click={handleClick}>ADD</button>
-</ul>
+  <button on:click={handleClick}>Check</button>
+</div>
 
-<form method="POST">
-  <label>
-    Email
-    <input name="email" type="email" />
-  </label>
-  <label>
-    Password
-    <input name="password" type="password" />
-  </label>
-  <button>Log in</button>
-</form>
+<style>
+  button {
+    width: 9rem;
+    height: 3rem;
+  }
+</style>
