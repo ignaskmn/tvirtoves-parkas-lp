@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import Button from "$lib/components/Button.svelte";
   import Select from "$lib/components/forms/Select.svelte";
-  import { supabase } from "$lib/supabaseClient";
+  import { page } from "$app/stores";
+  import type { Object } from "$lib/types";
   import { goto } from "$app/navigation";
   import { form, services, pageStates } from "$lib/stores";
   import MapWithMarkers from "$lib/components/map/MapWithMarkers.svelte";
 
-  export let data;
+  export let data: { objects: Object[] };
 
   let items: { value: number; label: string }[];
   let object: string;
@@ -17,17 +17,6 @@
   let innerWidth: number;
 
   let mapContainerWidth: number;
-
-  // onMount(async () => {
-  //   const container = document.querySelector(".map-container") as HTMLElement;
-  //   if (innerWidth < 480) {
-  //     mapContainerWidth = innerWidth;
-  //   } else {
-  //     if (container) {
-  //       mapContainerWidth = container.clientWidth;
-  //     }
-  //   }
-  // });
 
   const { objects } = data;
   if (objects) {
@@ -56,7 +45,7 @@
     }
 
     objects?.map((o) => {
-      if (o.object_id === object) {
+      if (String(o.object_id) === object) {
         objectDescription = o.description;
         objectImages = o.images;
       }
@@ -64,7 +53,7 @@
 
     $pageStates[0] = 2;
 
-    let { data, error } = await supabase
+    let { data, error } = await $page.data.supabase
       .from("service_labels")
       .select()
       .eq("object_id", object);
@@ -75,7 +64,7 @@
     } else {
       // clear services store, populate with data fethced from db
       $services = [];
-      $services = data.map((service) => ({
+      $services = data.map((service: any) => ({
         value: String(service.service_id),
         label: service.label,
       }));
@@ -102,7 +91,6 @@
     goto("/form/2");
   }
 
-  // $: $form.object ? handleSelection() : clearSelection();
   $: $form.object, handleChange();
   $: objectSelected = $pageStates[0] === 2 ? true : false;
   $: mapContainerWidth = innerWidth < 480 ? innerWidth : 480;

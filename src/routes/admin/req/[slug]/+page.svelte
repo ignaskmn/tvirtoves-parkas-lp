@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { supabase } from "$lib/supabaseClient";
   import type { Request } from "$lib/types";
+  import { page } from "$app/stores";
 
   export let data: { requests: Request[] };
 
@@ -22,12 +22,12 @@
 
   onMount(async () => {
     if (!services) return;
-    const { data } = await supabase
+    const { data } = await $page.data.supabase
       .from("services")
       .select(`label`)
       .in("service_id", services);
     if (!data) return;
-    serviceNames = data.map((service) => service.label);
+    serviceNames = data.map((service: any) => service.label);
   });
 
   const name = objects.name;

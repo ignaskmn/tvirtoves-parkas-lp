@@ -2,8 +2,8 @@
   import Button from "$lib/components/Button.svelte";
   import Input from "$lib/components/forms/Input.svelte";
   import { form, pageStates, services } from "$lib/stores";
-  import { supabase } from "$lib/supabaseClient";
   import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
 
   export let isActive: boolean = true;
 
@@ -49,7 +49,7 @@
       });
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await $page.data.supabase
       .from("requests")
       .insert([
         {

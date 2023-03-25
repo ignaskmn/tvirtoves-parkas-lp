@@ -5,9 +5,10 @@
   import TextField from "$lib/components/forms/TextField.svelte";
   import { goto } from "$app/navigation";
   import { form, services, pageStates } from "$lib/stores";
+  import type { Activity } from "$lib/types";
 
-  export let data;
-  let items: { value: string; label: string }[] = [];
+  export let data: { activities: Activity[] };
+  let items: { value: number; label: string }[] = [];
 
   function handleFilled() {
     if ($form.description != "" && !checkActivities() && !checkServices()) {

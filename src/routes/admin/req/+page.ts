@@ -1,7 +1,8 @@
-import { supabase } from "$lib/supabaseClient";
+import type { PageLoad } from "./$types";
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ url }) {
+export const load: PageLoad = async ({ parent, url }) => {
+  const { supabase } = await parent();
   const query = url.searchParams.get("page");
   let page: number;
   if (query) {
@@ -26,7 +27,7 @@ export async function load({ url }) {
   } catch (error) {
     console.log("error", error);
   }
-}
+};
 
 function getPagination(page: number, size: number) {
   const limit = size ? +size : 10;

@@ -2,7 +2,7 @@
   import Pagination from "$lib/components/admin/Pagination.svelte";
   import RequestListItem from "$lib/components/admin/RequestListItem.svelte";
   import type { Request } from "$lib/types";
-  import { page } from "$app/stores";
+  // import { page } from "$app/stores";
   export let data: { requests: Request[]; count: number; currentPage: number };
 
   $: requests = data.requests;

@@ -25,12 +25,15 @@ export type Service = {
 };
 
 export type Object = {
-  id: string;
-  label: string;
-  photos: string[];
+  object_id: number;
+  name: string;
+  images: string;
   description: string;
-  services: Service[];
-  location: string;
+};
+
+export type Activity = {
+  activity_id: number;
+  label: string;
 };
 
 export type Form = {

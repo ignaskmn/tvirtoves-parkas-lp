@@ -1,7 +1,7 @@
 <script lang="ts">
   import Read from "./Read.svelte";
   import type { Request } from "$lib/types";
-  import { supabase } from "$lib/supabaseClient";
+  import { page } from "$app/stores";
 
   export let request: Request;
 
@@ -9,12 +9,11 @@
 
   async function onClick() {
     if (!read) {
-      await supabase
+      await $page.data.supabase
         .from("requests")
         .update({ read: true })
         .eq("request_id", request_id);
     }
-    console.log(request_id);
   }
 
   const date = new Date(created_at);
